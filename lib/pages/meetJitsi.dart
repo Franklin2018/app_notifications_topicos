@@ -4,14 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 
-class Meeting extends StatefulWidget {
-  Meeting({Key key}) : super(key: key);
+class MeetingPage extends StatefulWidget {
+  //MeetingPage({Key key}) : super(key: key);
 
   @override
   _MeetingState createState() => _MeetingState();
 }
 
-class _MeetingState extends State<Meeting> {
+class _MeetingState extends State<MeetingPage> {
   final serverText = TextEditingController();
   final roomText = TextEditingController(text: "salatopicos123");
   final subjectText = TextEditingController(text: "Test Meeting Topicos");
@@ -19,9 +19,9 @@ class _MeetingState extends State<Meeting> {
   final emailText = TextEditingController(text: "test1@email.com");
   //final iosAppBarRGBAColor =
   //  TextEditingController(text: "#0080FF80"); //transparent blue
-  bool isAudioOnly = true;
-  bool isAudioMuted = true;
-  bool isVideoMuted = true;
+  bool? isAudioOnly = true;
+  bool? isAudioMuted = true;
+  bool? isVideoMuted = true;
 
   @override
   void initState() {
@@ -195,26 +195,26 @@ class _MeetingState extends State<Meeting> {
     );
   }
 
-  _onAudioOnlyChanged(bool value) {
+  _onAudioOnlyChanged(bool? value) {
     setState(() {
       isAudioOnly = value;
     });
   }
 
-  _onAudioMutedChanged(bool value) {
+  _onAudioMutedChanged(bool? value) {
     setState(() {
       isAudioMuted = value;
     });
   }
 
-  _onVideoMutedChanged(bool value) {
+  _onVideoMutedChanged(bool? value) {
     setState(() {
       isVideoMuted = value;
     });
   }
 
   _joinMeeting() async {
-    String serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
+    String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
     Map<FeatureFlagEnum, bool> featureFlags = {
       FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
     };
